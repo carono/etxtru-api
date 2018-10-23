@@ -1,25 +1,26 @@
 <?php
 require 'func.php';
 
+$sectionData = [];
 
-$content = <<<HTML
+$sectionData[] = <<<HTML
 [![Latest Stable Version](https://poser.pugx.org/carono/etxtru-api/v/stable)](https://packagist.org/packages/carono/etxtru-api)
 [![Total Downloads](https://poser.pugx.org/carono/etxtru-api/downloads)](https://packagist.org/packages/carono/etxtru-api)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/carono/etxtru-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/carono/etxtru-api/?branch=master)
 HTML;
 
 
-$content .= asHeader('Введение');
-$content .= <<<HTML
+$sectionData[] = asHeader('Введение');
+$sectionData[] = <<<HTML
 Данный клиент разработан для работы с сайтом https://www.etxtru.ru.  
 Класс клиента генерируется автоматически на основе документации https://www.etxt.ru/api/
 HTML;
 
 
-$content .= asHeader('Инсталяция');
-$content .= asCode('composer require carono/etxtru-api');
-$content .= asHeader('Использование');
-$content .= <<<HTML
+$sectionData[] = asHeader('Инсталяция');
+$sectionData[] = asCode('composer require carono/etxtru-api');
+$sectionData[] = asHeader('Использование');
+$sectionData[] = <<<HTML
 ```php
 // Получение баланса
   
@@ -53,7 +54,7 @@ $data = json_decode(file_get_contents('data.json'), true);
 $description = [
     ['Метод', 'Описание']
 ];
-$sectionData = [];
+
 foreach ($data as $api => $section) {
     $sectionName = formMethodName($section['name']);
     $description[] = ['$client->' . $sectionName . '()', $section['description']];
@@ -65,9 +66,6 @@ foreach ($data as $api => $section) {
 ```
 
 HTML;
-    $methods = [
-        ['Метод', 'Описание', 'Входные данные', 'Выходные данные']
-    ];
     $sectionData[] = asHeader('Доступные методы', 2);
     foreach ($section['methods'] as $method) {
         $sectionData[] = '**' . $method['name'] . '** - ' . $method['description'];
@@ -109,24 +107,9 @@ HTML;
             $params[] = [$param['name'], stripLines($param['description'])];
         }
         $sectionData[] = asTable($params);
-
-
-//            $results[] = formParamLine($result);
-//            if (isset($result['result'])) {
-//                foreach ($result['result'] as $res) {
-//                    $results[] = formParamLine($res);
-//                }
-//            }
-
         $sectionData[] = "\n\n***\n\n";
     }
-    $sectionData[] = asTable($methods);
-}
-$content .= asTable($description);
-
-foreach ($sectionData as $sectionDatum) {
-    $content .= $sectionDatum;
 }
 
-file_put_contents('../README.md', trim($content));
+file_put_contents('../README.md', trim(implode('', $sectionData)));
 

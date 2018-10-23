@@ -136,7 +136,7 @@ function asTable($array)
 
 function asHeader($string, $sub = 1)
 {
-    return "\n\n" . str_repeat('#', $sub) . $string . "\n\n";
+    return "\n\n" . str_repeat('#', $sub) . ' ' . $string . "\n\n";
 }
 
 function asCode($code)
