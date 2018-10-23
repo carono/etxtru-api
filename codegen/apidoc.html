@@ -1,0 +1,3781 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://www.etxt.ru/skins/default/css/style-new.css?1.1" rel="stylesheet" type="text/css" />
+    <script src="https://www.etxt.ru/js/boot.js?1"></script>
+    <script src="https://www.etxt.ru/js/jquery.js"></script>
+    <script src="https://www.etxt.ru/js/global.js?1.2"></script>
+    <script src="https://www.etxt.ru/js/owl.carousel.min.js"></script>
+    <!-- Начало шаблона метаданных -->
+<title>API интерфейс работы с биржей.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251" />
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="KeyWords" content="контент, рерайтинг, копирайтинг, перевод, готовые статьи" />
+<meta name="Description" content="Система продажи/покупки контента, рерайтинг, копирайтинг, перевод, готовые статьи" />
+<link rel="canonical" href="https://www.etxt.ru/api/" />
+<!-- Конец шаблона метаданных -->
+    <meta name="webmoney.attestation.label" content="webmoney attestation label#62DB4B05-CF58-439D-AB7E-D1EF3DA57B3D" />
+    <meta name="google-site-verification" content="ng35ybQeaT0_PylqeLiEUPCK3OcybIfvA5Fzko1aWa8" />
+    <meta name="google-site-verification" content="lD_tLPjXLFbBlxM1SoCJk72ckPuCfMME2sJBYpT58Lo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="verify-reformal" content="5c58727d855e784e2c6fa24b" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+        <script>
+            // функция открытия привата с пользователем
+            function openUserPrivate(id) { var url = 'https://www.etxt.ru/chat.php?sid=cu1h50rosd30osiovkm0336565'; if (id) url = url + '&id=' + id; window.open(url, 'private'+ id, 'toolbar=0,scrollbars=1,width=800,height=' + $(window).height()); };
+        </script>
+
+</head>
+<body>
+        <script async src="//api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU"></script>
+    <div class="mod-header">
+        <div class="mod-header__container">
+            <div class="mod-header__logo">
+                <a href="https://www.etxt.ru/" class="js-target" data-target="nhead_main"><img src="https://www.etxt.ru/skins/default/images/header/logo.png" alt="Биржа контента"><span>биржа контента</span></a>
+            </div>
+            <div class="mod-header__menu">
+                <ul>
+                    <li class="mod-header__submenu">
+                        <a href="https://www.etxt.ru/about/" class="js-target" data-target="nhead_onas">О проекте</a>
+                        <ul>
+                            <li><a href="https://www.etxt.ru/workers/" class="js-target" data-target="nhead_user">Исполнителям</a></li>
+                            <li><a href="https://www.etxt.ru/about/" class="js-target" data-target="nhead_client">Заказчикам</a></li>
+                            <li><a href="https://www.etxt.ru/reports/clients/" class="js-target" data-target="nhead_comment">Отзывы</a></li>
+                        </ul>
+                    </li>
+                    <li class="mod-header__submenu">
+                        <a href="#" class="js-target" data-target="nhead_uslugi">Услуги</a>
+                        <ul>
+                            <li><a href="https://www.etxt.ru/copywriting/" class="js-target" data-target="nhead_copy">Копирайтинг</a></li>
+                            <li><a href="https://www.etxt.ru/rewriting/" class="js-target" data-target="nhead_write">Рерайтинг</a></li>
+                            <li><a href="https://www.etxt.ru/seocopywriting/" class="js-target" data-target="nhead_seo">SEO-копирайтинг</a></li>
+                            <li><a href="https://www.etxt.ru/translating/" class="js-target" data-target="nhead_trans">Переводы</a></li>
+                            <li><a href="https://www.etxt.ru/correction/" class="js-target" data-target="nhead_correct">Корректура</a></li>
+                        </ul>
+                    </li>
+                    <li class="mod-header__submenu">
+                        <a href="#" class="js-target" data-target="nhead_magaz">Магазин</a>
+                        <ul>
+                            <li><a href="https://www.etxt.ru/market/" class="js-target" data-target="nhead_market">Магазин статей</a></li>
+                            <li><a href="https://www.etxt.ru/photostock/" class="js-target" data-target="nhead_photo">Магазин фотографий</a></li>
+                        </ul>
+                    </li>
+                    <li class="mod-header__submenu">
+                        <a href="#" class="js-target" data-target="nhead_service">Сервисы</a>
+                        <ul>
+                            <li><a href="https://www.etxt.ru/antiplagiat/" class="js-target" data-target="nhead_anti">Проверка уникальности</a></li>
+                            <li><a href="https://www.etxt.ru/links/" class="js-target" data-target="nhead_links">Система размещения</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.etxt.ru/subscribes/" class="js-target" data-target="nhead_blog">Блог</a></li>
+
+                </ul>
+            </div>
+            <div class="mod-header__auth mod-header__auth_">
+                <a href="https://www.etxt.ru/users/register/" class="mod-header__auth-reg mod-etxt__link_reg js-target" data-target="nhead_registr" data-link="https://www.etxt.ru/ajax.php?mod=users&act=reg&amp;sid=cu1h50rosd30osiovkm0336565"><img src="https://www.etxt.ru/skins/default/images/header/reg.png" alt="Регистрация">Регистрация</a>
+                <a href="/users/signin/" class="mod-header__auth-login js-target" data-target="nhead_enter" data-link="https://www.etxt.ru/ajax.php?mod=users&lib=auth&act=form&amp;sid=cu1h50rosd30osiovkm0336565">Войти</a>
+            </div>
+            <div class="mod-header__faq" title="Вопросы и ответы">
+                <a href="https://www.etxt.ru/faq/" class="js-target" data-target="nhead_q"><span class="mod-header__faq-img"></span></a>
+            </div>
+            <div class="mod-header__feedback" title="Служба поддержки">
+                <a href="https://www.etxt.ru/feedback/" class="js-target" data-target="nhead_os"><span class="mod-header__feedback-img"></span></a>
+            </div>
+            <div class="mod-header__lang mod-header__lang_">
+                <a href="https://www.etxt.biz?lang=en" class="js-target" data-target="nhead_lang"><img src="https://www.etxt.ru/skins/default/images/header/eng.png" alt="En"></a>
+            
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="mod-header__mobile-container">
+            <div class="mod-header__mobile-open">
+                <a href="#" class="mod-header__mobile-open-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+            <div class="mod-header__mobile-overlay"></div>
+            <div class="mod-header__mobile-menu">
+                <a href="#" class="mod-header__mobile-close-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+                <!--noindex-->
+                <ul>
+                    <li class="mod-header__mobile-submenu">
+                        <a href="#" class="js-target" data-target="nhead_onas">О проекте</a>
+                        <ul>
+                            <li><a href="https://www.etxt.ru/workers/" class="js-target" data-target="nhead_user">Исполнителям</a></li>
+                            <li><a href="https://www.etxt.ru/about/" class="js-target" data-target="nhead_client">Заказчикам</a></li>
+                            <li><a href="https://www.etxt.ru/reports/clients/" class="js-target" data-target="nhead_comment">Отзывы</a></li>
+                        </ul>
+                    </li>
+                    <li class="mod-header__mobile-submenu">
+                        <a href="#" class="js-target" data-target="nhead_uslugi">Услуги</a>
+                        <ul>
+                            <li><a href="https://www.etxt.ru/copywriting/" class="js-target" data-target="nhead_copy">Копирайтинг</a></li>
+                            <li><a href="https://www.etxt.ru/rewriting/" class="js-target" data-target="nhead_write">Рерайтинг</a></li>
+                            <li><a href="https://www.etxt.ru/seocopywriting/" class="js-target" data-target="nhead_seo">SEO-копирайтинг</a></li>
+                            <li><a href="https://www.etxt.ru/translating/" class="js-target" data-target="nhead_trans">Переводы</a></li>
+                            <li><a href="https://www.etxt.ru/correction/" class="js-target" data-target="nhead_correct">Корректура</a></li>
+                        </ul>
+                    </li>
+                    <li class="mod-header__mobile-submenu">
+                        <a href="#" class="js-target" data-target="nhead_magaz">Магазин</a>
+                        <ul>
+                            <li><a href="https://www.etxt.ru/market/" class="js-target" data-target="nhead_market">Магазин статей</a></li>
+                            <li><a href="https://www.etxt.ru/photostock/" class="js-target" data-target="nhead_photo">Магазин фотографий</a></li>
+                        </ul>
+                    </li>
+                    <li class="mod-header__mobile-submenu">
+                        <a href="#" class="js-target" data-target="nhead_service">Сервисы</a>
+                        <ul>
+                            <li><a href="https://www.etxt.ru/antiplagiat/" class="js-target" data-target="nhead_anti">Проверка уникальности</a></li>
+                            <li><a href="https://www.etxt.ru/links/" class="js-target" data-target="nhead_links">Система размещения</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.etxt.ru/subscribes/" class="js-target" data-target="nhead_blog">Блог</a></li>
+
+                </ul>
+                <!--/noindex-->
+                <hr>
+                <div class="mod-header__mobile-phone">
+                    <div>+7 (495) 133-16-64</div>
+                    <div><a href="https://www.etxt.ru/feedback/" class="js-target" data-target="nhead_os">Обратная связь</a></div>
+                    <div><a href="https://www.etxt.ru/faq/" class="js-target" data-target="nhead_q">FAQ</a></div>
+                </div>
+                <div class="mod-header__mobile-lang">
+                    <a href="https://www.etxt.biz?lang=en" class="js-target" data-target="nhead_lang"><img src="https://www.etxt.ru/skins/default/images/header/eng.png" alt="English">English</a>
+                
+                </div>
+            </div>
+            <div class="mod-header__mobile-logo">
+                <a href="/" class="js-target" data-target="nhead_main"><img src="https://www.etxt.ru/skins/default/images/header/logo@2x.png" alt="Биржа контента"></a>
+            </div>
+            <div class="mod-header__mobile-auth">
+                <a href="#" class="mod-header__mobile-auth-button"><img src="https://www.etxt.ru/skins/default/images/header/auth@2x.png" alt="Авторизация"></a>
+                <div class="mod-header__mobile-auth-form">
+                    <a href="https://www.etxt.ru/users/register/" class="mod-header__mobile-auth-reg mod-etxt__link_reg js-target" data-target="nhead_registr" data-link="https://www.etxt.ru/ajax.php?mod=users&act=reg&amp;sid=cu1h50rosd30osiovkm0336565">Регистрация</a>
+                    <a href="/users/signin/" class="mod-header__mobile-auth-login js-target" data-target="nhead_enter" data-link="https://www.etxt.ru/ajax.php?mod=users&lib=auth&act=form&amp;sid=cu1h50rosd30osiovkm0336565">Войти</a>
+                 </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="mod-auth__dialog Hide">
+        <div class="mod-auth__dialog_wrapper"><img class="mod-header__user-messages-loaging" src="/images/loading.gif" alt="" /></div>
+    </div>
+
+    <link href="/modules/client/index/css/index.css" rel="stylesheet" type="text/css" property="stylesheet" />
+
+<script>
+    require ('modules/client/index/js/index');
+</script>
+
+<div class="mod-ad">
+    <div class="mod-ad__container">
+        <div class="mod-ad__title">Объявления пользователей</div>
+        <div class="mod-ad__mobile hide">
+            <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+            <div class="mod-ad__buttons-user-mobile">
+                <a href="https://www.etxt.ru/advers/">Все объявления</a>
+            </div>
+        </div>
+        <div class="mod-ad__banners" data-target="OUR_AD_CLICK">
+            <div class="advers-carousel owl-carousel owl-theme">
+                <div class="mod-ad__banners-item">
+                    <div>
+                        <img src="/data/advers/30451.jpg" alt="">
+                    </div>
+                    
+                    <div>
+                        <p><a href="https://www.etxt.ru/advers/go/?id=30451">Юридические Темы</a></p>
+                        <p>В проект на длительное сотрудничество ищу несколько авторов юристов. Объемы!</p>
+                    </div>
+                </div>
+            
+                <div class="mod-ad__banners-item">
+                    <div>
+                        <p><a href="https://www.etxt.ru/advers/go/?id=38377">Требуются копирайтеры!</a></p>
+                        <p>Требуются копирайтеры, оплата - от 10 рублей за 1000 знаков. Все вопросы в личные сообщения.</p>
+                    </div>
+                </div>
+            
+                <div class="mod-ad__banners-item">
+                    <div>
+                        <img src="/data/advers/65612.jpg" alt="">
+                    </div>
+                    
+                    <div>
+                        <p><a href="https://www.etxt.ru/advers/go/?id=65612">Юристы - Велкам!</a></p>
+                        <p>Авторы ЮРИСТЫ - добро пожаловать! Быстрая проверка, адекватное ТЗ и цена.</p>
+                    </div>
+                </div>
+            
+                <div class="mod-ad__banners-item">
+                    <div>
+                        <img src="/data/advers/19004.jpg" alt="">
+                    </div>
+                    
+                    <div>
+                        <p><a href="https://www.etxt.ru/advers/go/?id=19004">Постоянная работа - 35 р./1000</a></p>
+                        <p>Постоянная работа талантливым авторам, оплата 35 р./1000. Большой выбор тем, гибкие сроки выполнения</p>
+                    </div>
+                </div>
+            
+                <div class="mod-ad__banners-item">
+                    <div>
+                        <img src="/data/advers/17297.jpg" alt="">
+                    </div>
+                    
+                    <div>
+                        <p><a href="https://www.etxt.ru/advers/go/?id=17297">Всегда качественные статьи!</a></p>
+                        <p>Заходи и выбирай на свой вкус! Самые разные тематики с высокой уникальностью! По скромным ценам!</p>
+                    </div>
+                </div>
+            
+                <div class="mod-ad__banners-item">
+                    <div>
+                        <img src="/data/advers/61648.jpg" alt="">
+                    </div>
+                    
+                    <div>
+                        <p><a href="https://www.etxt.ru/advers/go/?id=61648">Авторы для отзывов</a></p>
+                        <p>Ищем авторов (желательно мужчин) с аккаунтами на сервисах-отзовиках. От 10 отзывов в профиле.</p>
+                    </div>
+                </div>
+            
+                <div class="mod-ad__banners-item">
+                    <div>
+                        <img src="/data/advers/33694.jpg" alt="">
+                    </div>
+                    
+                    <div>
+                        <p><a href="https://www.etxt.ru/advers/go/?id=33694">Простые условия.Хорошая оплата</a></p>
+                        <p><strong>Простые женские темы</strong><br />
+- Простые требования<br />
+- Большие сроки<br />
+- Быстрая проверка<br />
+- Отзыв, Белый</p>
+                    </div>
+                </div>
+            
+                <div class="mod-ad__banners-item">
+                    <div>
+                        <p><a href="https://www.etxt.ru/advers/go/?id=55960">Написание статей о быт.технике</a></p>
+                        <p>Много заказов о бытовой технике. Оплата 50руб/1000.Работа несложная, но соответствие ТЗ обязательно</p>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        <div class="mod-ad__buttons-user">
+            <a href="https://www.etxt.ru/advers/" class="mod-ad__buttons-user-all">Все объявления</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $('.advers-carousel').owlCarousel({
+            loop:false,
+            margin:0,
+            nav:false,
+            dots:false,
+            responsive:{
+                0:{
+                    items:1
+                },
+                1000:{
+                    items:2
+                },
+                1200:{
+                    items:3
+                }
+            }
+        });
+
+        $(".mod-ad__mobile > a").click(function() {
+            $(".mod-ad__buttons-user-mobile").toggle();
+            return false;
+        });
+    });
+
+    $(document).mousedown(function (e) {
+        var div = $(".mod-ad__buttons-user-mobile");
+        if (!div.is(e.target) && div.has(e.target).length === 0) div.hide();
+    });
+
+</script>
+
+
+<div>
+    <div class="mod-index mod-index-pages">
+        <div class="mod-index-header">Руководство по использованию API</div>
+<p>API определяет набор функций, к которым разработчики могут совершать запросы и получать ответы. Взаимодействие происходит по протоколу HTTP.</p>
+<p>Все вызовы методов API - это GET или POST HTTP-запросы к URL <span class="code">https://www.etxt.ru/api/json/</span> с некоторым набором параметров, URL запроса <b>ОБЯЗАТЕЛЬНО</b> должен содержать 3 нижеприведенных параметра, то есть <span class="code">method</span>, <span class="code">token</span> и <span class="code">sign</span> должны быть переданы только по GET. Вы выбираете в документации нужный метод, например, users.getList, формируете запрос согласно документации метода, и осуществляете этот запрос. В ответ на запрос вы получаете его результат, который также описан в документации каждой функции.</p>
+<p>Данные запроса могут передаваться в виде query-строки (после знака ?) при использовании метода GET, либо в теле POST-запроса. Помните, что в случае GET-запроса, параметры должны быть закодированы с помощью URL encoding.</p>
+<p>На данный момент, API не делает различий между GET- и POST-запросами. Тем не менее, помните, что существует ограничение на длину URL запроса - 2048 символов. Поэтому мы рекомендуем вам выполнять запросы на получение информации с помощью метода GET (они обычно легко умещаются в ограничение), а запросы на изменение данных - создание/изменение заказа - с помощью метода POST. Так вы не будете ограничены длиной запроса, кроме того, такое использование больше соответствует спецификации протокола HTTP.</p>
+<p>Ответ сервера на запрос возвращается <b>только в формате JSON</b> в символьной кодировке Unicode.</p>
+<h4>Параметры запроса</h4>
+<p>В каждом запросе должен присутствовать набор обязательных параметров. Также для каждой функции в ее документации определены дополнительные параметры, нужные только для этой функции. Текстовые значения параметров должны быть преданы в кодировке UTF-8. Одинаковые для всех функций параметры перечислены ниже.</p>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Имя</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>method</td>
+        <td>string</td>
+        <td>название вызываемого метода, например, <span class="code">users.getList</span>; обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>sign</td>
+        <td>string</td>
+        <td>подпись запроса; обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>token</td>
+        <td>string</td>
+        <td>API-ключ текущего пользователя</td>
+    </tr>
+</table>
+<p>Порядок следования параметров в запросе значения не имеет, порядок параметров важен только при расчете подписи.</p>
+<p>API-ключ <span class="code">token</span> уникален для каждого пользователя и его можно узнать в разделе "Личная информация/Настройка интерфейса".</p>
+<p>Подпись <span class="code">sign</span> расчитывается по алгоритму, приведенному ниже. Подписываются только параметры, переданные по <b>GET</b>.</p>
+<h4>Подпись запроса</h4>
+<p>Чтобы удостовериться, что запрос отправлен действительно вами, а не злоумышленниками от лица вашего приложения, все запросы к API должны быть подписаны. Результат расчета подписи вы должны передать в параметре <span class="code">sign</span>. Биржа проверит подпись и выполнит запрос только если подпись правильная.</p>
+<p>Алгоритм использует отдельный ключ, <span class="code">api_pass</span>, который мы настоятельно рекомендуем вам хранить только на ваших серверах и использовать только при запросах с них к серверу Биржи. Данный ключ задается в разделе "Личная информация/Настройки интерфейса".</p>
+<p><span class="code">sign = md5(params.md5(api_pass.'api-pass'))</span></p>
+<p>Значение <span class="code">params</span> — это конкатенация пар «имя=значение» <b>отсортированных в алфавитом порядке</b> по «имя», где «имя» — это название параметра, передаваемого в функцию API, «значение» — значение параметра. Разделитель в конкатенации не используется. Параметр sign при расчете подписи не учитывается, все остальные параметры запроса должны учитываться при расчете.</p>
+<p>Безопасность схемы основывается на том, что <span class="code">api_pass</span> знаете только вы и Биржа. Поэтому никогда не раскрывайте его третьим лицам. Если у вас возникли сомнения в безопасности <span class="code">api_pass</span>, измените его в настройках профиля.</p>
+<h4>Пример кода на PHP</h4>
+<p>Данный фрагмент кода создает корневую папку в проектах с именем "Folder name".</p>
+<textarea style="width: 90%; height: 650px; margin-top: 10px;">
+<?
+
+$auxParamsArr = [
+    'name'      => 'Folder Name',
+    'id_parent' => 0
+];
+
+$json = makeRequest("folders.addFolder", $auxParamsArr);
+print_r($json);
+
+
+function makeRequest($method, $auxParamsArr) {
+
+    $api_url = "https://www.etxt.ru/api/json/";
+    $api_pass = "XXXXXXXXXXXXX";
+    $token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+
+    $baseParamsArr = [
+        'token'  => $token,
+        'method' => $method
+    ];
+
+    ksort($baseParamsArr);
+
+    $params = "";
+    foreach($baseParamsArr as $key => $val)
+        $params .=  ($key . "=" . $val);
+
+    $sign = md5($params.md5($api_pass.'api-pass'));
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url."?token=".$token."&method=".$method."&sign=".$sign);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($auxParamsArr));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+    $json = curl_exec($ch);
+    curl_close($ch);
+
+    return $json;
+}
+</textarea>
+<h4>Функции API</h4>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Функция</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td><a href="#categories.listCategories" class="blue-link">categories.listCategories</a></td>
+        <td>Функция возвращает список тематических категорий заказов/статей</td>
+    </tr>
+    <tr>
+        <td><a href="#folders.listFolders" class="blue-link">folders.listFolders</a></td>
+        <td>Функция возвращает список папок текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#folders.addFolder" class="blue-link">folders.addFolder</a></td>
+        <td>Функция создает папку для текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#folders.moveToFolder" class="blue-link">folders.moveToFolder</a></td>
+        <td>Функция перемещает объекты в папку</td>
+    </tr>
+    <tr>
+        <td><a href="#users.getList" class="blue-link">users.getList</a></td>
+        <td>Функция возвращает список исполнителей</td>
+    </tr>
+    <tr>
+        <td><a href="#users.getBW" class="blue-link">users.getBW</a></td>
+        <td>Функция возвращает список пользователей, находящихся в черном и белом списке текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#users.getNote" class="blue-link">users.getNote</a></td>
+        <td>Функция возвращает примечание к указанному пользователю</td>
+    </tr>
+    <tr>
+        <td><a href="#users.getUser" class="blue-link">users.getUser</a></td>
+        <td>Функция возвращает подробную информацию об указанном пользователе</td>
+    </tr>
+    <tr>
+        <td><a href="#users.getWorks" class="blue-link">users.getWorks</a></td>
+        <td>Функция возвращает виды работ и минимальные цены исполнителя по ним</td>
+    </tr>
+    <tr>
+        <td><a href="#users.getReports" class="blue-link">users.getReports</a></td>
+        <td>Функция возвращает отзывы указанного пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#users.setReport" class="blue-link">users.setReport</a></td>
+        <td>Функция добавляет/редактирует отзыв пользователю</td>
+    </tr>
+    <tr>
+        <td><a href="#users.getUserBW" class="blue-link">users.getUserBW</a></td>
+        <td>Функция возвращает количество белых и черных списков, в которых находится пользователь</td>
+    </tr>
+    <tr>
+        <td><a href="#users.setUserBW" class="blue-link">users.setUserBW</a></td>
+        <td>Функция добавляет или удаляет пользователя в черный/белый список</td>
+    </tr>
+    <tr>
+        <td><a href="#users.getBalance" class="blue-link">users.getBalance</a></td>
+        <td>Функция возвращает состояние лицевого счета текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.listTasks" class="blue-link">tasks.listTasks</a></td>
+        <td>Функция возвращает список заказов текущего пользователя, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.viewNotes" class="blue-link">tasks.viewNotes</a></td>
+        <td>Функция возвращает список заявок и комментариев на указанный заказ (или список заказов) текущего пользователя, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.viewNotesAll" class="blue-link">tasks.viewNotesAll</a></td>
+        <td>Функция возвращает список всех поданных заявок на все заказы текущего заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.setNote" class="blue-link">tasks.setNote</a></td>
+        <td>Функция принятия указанной заявки на заказ, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.unsetNote" class="blue-link">tasks.unsetNote</a></td>
+        <td>Функция отклонения указанной заявки на заказ, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.paidTask" class="blue-link">tasks.paidTask</a></td>
+        <td>Функция принятия заказа на проверке, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.cancelTask" class="blue-link">tasks.cancelTask</a></td>
+        <td>Функция отправки заказа на проверке на доработку, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.getResults" class="blue-link">tasks.getResults</a></td>
+        <td>Функция получения результатов по заказам, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.deleteTask" class="blue-link">tasks.deleteTask</a></td>
+        <td>Функция удаления заказов в статусе ожидания исполнителя или из черновика, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.extraPaid" class="blue-link">tasks.extraPaid</a></td>
+        <td>Функция начисления доплаты по заданию</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.saveTask" class="blue-link">tasks.saveTask</a></td>
+        <td>Функция добавления/редактирования заказа, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.failTask" class="blue-link">tasks.failTask</a></td>
+        <td>Функция отмены просроченного заказа, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.copyTask" class="blue-link">tasks.copyTask</a></td>
+        <td>Функция копирования заказа, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.setDeadline" class="blue-link">tasks.setDeadline</a></td>
+        <td>Функция продления срока сдачи заказа (перед публикацией черновика), только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.saveComment" class="blue-link">tasks.saveComment</a></td>
+        <td>Функция добавления комментария к заказу, только для заказчика либо назначенного исполнителя</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks.sendNoteFail" class="blue-link">tasks.sendNoteFail</a></td>
+        <td>Функция создания заявки на снятие исполнителя с заказа</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks_archive.listTasks" class="blue-link">tasks_archive.listTasks</a></td>
+        <td>Функция получения списка заказов из архива заказов, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#tasks_archive.getResults" class="blue-link">tasks_archive.getResults</a></td>
+        <td>Функция получения результатов по архивному заказу, только для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#options.getLangs" class="blue-link">options.getLangs</a></td>
+        <td>Функция получения списка языков, используемых в системе</td>
+    </tr>
+    <tr>
+        <td><a href="#articles.getList" class="blue-link">articles.getList</a></td>
+        <td>Функция получения списка готовых статей на продажу</td>
+    </tr>
+    <tr>
+        <td><a href="#articles.buy" class="blue-link">articles.buy</a></td>
+        <td>Функция осуществляет покупку указанной статьи текущим пользователем</td>
+    </tr>
+    <tr>
+        <td><a href="#articles.getText" class="blue-link">articles.getText</a></td>
+        <td>Функция выводит тексты купленных статей для текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#articles.download" class="blue-link">articles.download</a></td>
+        <td>Функция создает zip-архив с текстами и изображениями указанных купленных статей для текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#articles_archive.getList" class="blue-link">articles_archive.getList</a></td>
+        <td>Возвращает список купленных пользователм статей и перенесенных в архив статей</td>
+    </tr>
+    <tr>
+        <td><a href="#articles_archive.getText" class="blue-link">articles_archive.getText</a></td>
+        <td>Функция выводит тексты запрошенных статей из архива текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#articles_archive.download" class="blue-link">articles_archive.download</a></td>
+        <td>Функция создает zip-архив с текстами и изображениями указанных статей из архива для текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#bwgroups.listGroups" class="blue-link">bwgroups.listGroups</a></td>
+        <td>Функция возвращает список групп для БС/ЧС текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#bwgroups.saveGroup" class="blue-link">bwgroups.saveGroup</a></td>
+        <td>Функция добавляет или изменяет группу для БС/ЧС текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#bwgroups.deleteGroup" class="blue-link">bwgroups.deleteGroup</a></td>
+        <td>Функция удаляет группу для БС/ЧС текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#bwgroups.updateGroup" class="blue-link">bwgroups.updateGroup</a></td>
+        <td>Функция перемещает пользователя, уже занесенного в БС/ЧС, в указанную группу текущего пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#messages.getList" class="blue-link">messages.getList</a></td>
+        <td>Функция выводит непрочитанные системные сообщения пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#messages.setRead" class="blue-link">messages.setRead</a></td>
+        <td>Функция помечает указанные непрочитанные системные сообщения пользователя как прочитанные</td>
+    </tr>
+    <tr>
+        <td><a href="#messages.setDelete" class="blue-link">messages.setDelete</a></td>
+        <td>Функция удаляет указанные непрочитанные системные сообщения пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="#messages.readPrivate" class="blue-link">messages.readPrivate</a></td>
+        <td>Функция выводит сообщения из привата с указанным пользователем</td>
+    </tr>
+    <tr>
+        <td><a href="#messages.getCountUnread" class="blue-link">messages.getCountUnread</a></td>
+        <td>Функция возвращает количество непрочитанных сообщений из привата, с группировкой по авторам</td>
+    </tr>
+    <tr>
+        <td><a href="#messages.writePrivate" class="blue-link">messages.writePrivate</a></td>
+        <td>Функция посылает сообщение в приват указанному пользователем</td>
+    </tr>
+    <tr>
+        <td><a href="#rating.listTasksFails" class="blue-link">rating.listTasksFails</a></td>
+        <td>Функция выводит список отказов от заказов для заказчика</td>
+    </tr>
+    <tr>
+        <td><a href="#rating.ratingUserBack" class="blue-link">rating.ratingUserBack</a></td>
+        <td>Функция возвращает рейтинг исполнителю по определенному отказу</td>
+    </tr>
+    <tr>
+        <td><a href="#diff.compareText" class="blue-link">diff.compareText</a></td>
+        <td>Функция показывает степень схожести двух текстов</td>
+    </tr>
+    <tr>
+        <td><a href="#correction.add" class="blue-link">correction.add</a></td>
+        <td>Функция создает задание на коррекцию текста</td>
+    </tr>
+    <tr>
+        <td><a href="#correction.import" class="blue-link">correction.import</a></td>
+        <td>Функция создает задание на коррекцию из заказов и статей</td>
+    </tr>
+</table>
+
+<h4>Возможные возвращаемые ошибки</h4>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Ошибка</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>no_params</td>
+        <td>Отсутствует или некорректен обязательный параметр функции</td>
+    </tr>
+    <tr>
+        <td>no_object</td>
+        <td>Объектов по запросу не найдено</td>
+    </tr>
+    <tr>
+        <td>no_access</td>
+        <td>Отсутствует доступ к запрашиваемому действию или объекту</td>
+    </tr>
+    <tr>
+        <td>is_private_data</td>
+        <td>В значениях текстовых параметров используется контактная информация</td>
+    </tr>
+    <tr>
+        <td>max_limit</td>
+        <td>Превышение установленных лимитов операции</td>
+    </tr>
+    <tr>
+        <td>file_is_empty</td>
+        <td>Получен пустой файл</td>
+    </tr>
+    <tr>
+        <td>file_not_uploaded</td>
+        <td>Некорректная загрузка файла</td>
+    </tr>
+    <tr>
+        <td>file_too_big</td>
+        <td>Размер файла превышает допустимый лимит</td>
+    </tr>
+    <tr>
+        <td>file_bad_type</td>
+        <td>Недопустимый формат файла</td>
+    </tr>
+    <tr>
+        <td>file_has_virus</td>
+        <td>Файл содержит вирус</td>
+    </tr>
+</table>
+
+<p>Также ошибки могут быть индивидуальны в конкретной функции.</p>
+
+<hr>
+
+<div id="categories.listCategories"></div>
+<h4>categories.listCategories</h4>
+<p>Возвращает список тематический категорий заказов/статей, отсортированный по названию категории.</p>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>Идентификатор категории</td>
+    </tr>
+    <tr>
+        <td>id_parent</td>
+        <td>Идентификатор родительской категории</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>Название категории</td>
+    </tr>
+    <tr>
+        <td>keyword</td>
+        <td>Ключевое слово категории</td>
+    </tr>
+</table>
+
+<div id="folders.listFolders"></div>
+<h4>folders.listFolders</h4>
+<p>Возвращает отсортированный список папок текущего пользователя.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>sort</td>
+        <td>string</td>
+        <td>date - сортировка по дате создания, name - по названию (по умолчанию)</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>Идентификатор папки</td>
+    </tr>
+    <tr>
+        <td>id_parent</td>
+        <td>Идентификатор родительской папки</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>Название папки</td>
+    </tr>
+    <tr>
+        <td>depth</td>
+        <td>Глубина вложенности папки</td>
+    </tr>
+    <tr>
+        <td>last</td>
+        <td>Флаг, является ли папка последней по глубине вложенности</td>
+    </tr>
+</table>
+
+<!-- -->
+<div id="folders.addFolder"></div>
+<h4>folders.addFolder</h4>
+<p>Cоздает папку для текущего пользователя.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>string</td>
+        <td>Название создаваемой папки (длинна от 1 до 128 знаков)</td>
+    </tr>
+    <tr>
+        <td>id_parent</td>
+        <td>int</td>
+        <td>Идентификатор родительской папки или 0 (по умолчанию) для корневой папки</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>Идентификатор созданной папки</td>
+    </tr>
+</table>
+
+<div id="folders.moveToFolder"></div>
+<h4>folders.moveToFolder</h4>
+<p>Фукнция перемещает объекты в папку.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>string</td>
+        <td>Идентификатор папки</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>string</td>
+        <td>Тип перемещаемых объектов.
+            <p>Значения:</p>
+            <ul>
+            <li>task - заказ</li>
+            <li>archive - архивный заказ</li>
+            <li>article - статья</li>
+            <li>article_archive - архивная статья</li>
+            <li>correction - коррекция</li>
+            <li>bhv_task - задания</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td>int (array)</td>
+        <td>Массив идентификаторов перемещаемых объектов</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>Количество перемещенных объектов</td>
+    </tr>
+</table>
+
+<div id="users.getList"></div>
+<h4>users.getList</h4>
+<p>Возвращает список исполнителей без сортировки.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>int</td>
+        <td>Число пользователей для выборке, не более 100 за запрос (по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td>int</td>
+        <td>Смещение от последней записи в выборке, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>rate_from</td>
+        <td>int</td>
+        <td>Фильтрация по рейтингу, начиная с данного значения</td>
+    </tr>
+    <tr>
+        <td>rate_out</td>
+        <td>int</td>
+        <td>Фильтрация по рейтингу, заканчивая данным значением</td>
+    </tr>
+    <tr>
+        <td>online</td>
+        <td>int</td>
+        <td>Флаг онлайн статуса на бирже, 1 - онлайн, 0 - офлайн, по умолчанию все вместе</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя</td>
+    </tr>
+    <tr>
+        <td>login</td>
+        <td>Логин пользователя</td>
+    </tr>
+    <tr>
+        <td>fio</td>
+        <td>ФИО пользователя</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Дополнительная информация о пользователе</td>
+    </tr>
+    <tr>
+        <td>country</td>
+        <td>Страна пользователя</td>
+    </tr>
+    <tr>
+        <td>city</td>
+        <td>Город пользователя</td>
+    </tr>
+    <tr>
+        <td>online</td>
+        <td>Онлайн статус пользователя (1 - онлайн, 0 - оффлайн)</td>
+    </tr>
+    <tr>
+        <td>regdate</td>
+        <td>Дата регистрации пользователя, unixtime</td>
+    </tr>
+    <tr>
+        <td>rate</td>
+        <td>Рейтинг пользователя</td>
+    </tr>
+</table>
+
+<div id="users.getBW"></div>
+<h4>users.getBW</h4>
+<p>Функция возвращает список пользователей, находящихся в черном и белом списке текущего пользователя.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>int</td>
+        <td>Число пользователей для выборке, не более 100 за запрос (по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td>int</td>
+        <td>Смещение от последней записи в выборке, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>id_group</td>
+        <td>int</td>
+        <td>Идентификатор группы БС/ЧС, если не определен, то выборка по параметру <code>type</code> </td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>string</td>
+        <td>Тип списка (whiteList - белый список, blackList - черный), по умолчанию все вместе</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя</td>
+    </tr>
+    <tr>
+        <td>id_group</td>
+        <td>Идентификатор группы списка</td>
+    </tr>
+    <tr>
+        <td>login</td>
+        <td>Логин пользователя</td>
+    </tr>
+    <tr>
+        <td>fio</td>
+        <td>ФИО пользователя</td>
+    </tr>
+    <tr>
+        <td>online</td>
+        <td>Онлайн-статус пользователя (1 - онлайн, 0 - оффлайн)</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>Тип списка (whiteList - белый список, blackList - черный)</td>
+    </tr>
+</table>
+
+<div id="users.getNote"></div>
+<h4>users.getNote</h4>
+<p>Функция возвращает примечание к указанному пользователю.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор пользователя, обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст примечания</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата последнего изменения примечания, unixtime</td>
+    </tr>
+</table>
+
+<div id="users.getUser"></div>
+<h4>users.getUser</h4>
+<p>Функция возвращает подробную информацию об указанном пользователе.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор пользователя, полуобязательный параметр, имеет приоритет над параметром login</td>
+    </tr>
+    <tr>
+        <td>login</td>
+        <td>string</td>
+        <td>Логин пользователя, полуобязательный параметр, может указываться при отсутствии параметра id</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя</td>
+    </tr>
+    <tr>
+        <td>login</td>
+        <td>Логин пользователя</td>
+    </tr>
+    <tr>
+        <td>fio</td>
+        <td>ФИО пользователя</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Дополнительная информация о пользователе</td>
+    </tr>
+    <tr>
+        <td>country</td>
+        <td>Страна пользователя</td>
+    </tr>
+    <tr>
+        <td>city</td>
+        <td>Город пользователя</td>
+    </tr>
+    <tr>
+        <td>online</td>
+        <td>Онлайн-статус пользователя (1 - онлайн, 0 - оффлайн)</td>
+    </tr>
+    <tr>
+        <td>regdate</td>
+        <td>Дата регистрации пользователя, unixtime</td>
+    </tr>
+    <tr>
+        <td>rate</td>
+        <td>Рейтинг пользователя</td>
+    </tr>
+    <tr>
+        <td>photo</td>
+        <td>Путь до аватара пользователя</td>
+    </tr>
+    <tr>
+        <td>group</td>
+        <td>Название группы пользователя</td>
+    </tr>
+    <tr>
+        <td>works</td>
+        <td>Виды указанных пользователем работ, только для исполнителя</td>
+    </tr>
+    <tr>
+        <td>categories</td>
+        <td>Категории, указанные пользователем, только для исполнителя</td>
+    </tr>
+    <tr>
+        <td>langs</td>
+        <td>Языки, указанные пользователем, только для исполнителя</td>
+    </tr>
+    <tr>
+        <td>portfolio</td>
+        <td>Число работ в портфолио, только для исполнителя</td>
+    </tr>
+</table>
+
+<div id="users.getWorks"></div>
+<h4>users.getWorks</h4>
+<p>Функция возвращает виды работ и минимальные цены исполнителя по ним.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор пользователя (исполнителя), обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>works</td>
+        <td>Массив ассоциативных пар значений [id_type =&gt; вид работы (1 - копирайтинг, 2 - рерайтинг, 3 - перевод, 4 - SEO копирайтинг), minprice =&gt; минимальная цена исполнителя (0 - цена не ограничена)]. Ключ элемента совпадает с id_type.</td>
+    </tr>
+</table>
+
+
+<div id="users.getReports"></div>
+<h4>users.getReports</h4>
+<p>Функция возвращает отзывы указанного незаблокированного пользователя. Отзывы разделены на два массива - negative (отрицательные отзывы) и positive (положительные) и сгруппированы по авторам.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор пользователя, обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_author</td>
+        <td>Идентификатор автора отзыва</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст отзыва</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата отзыва, unixtime</td>
+    </tr>
+</table>
+
+
+<div id="users.setReport"></div>
+<h4>users.setReport</h4>
+<p>Функция добавляет/редактирует отзыв пользователю.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор пользователя, кому отзыв</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор пользователя, кому отзыв</td>
+    </tr>
+    <tr>
+        <td>id_report</td>
+        <td>int</td>
+        <td>Идентификатор редактируемого отзыва, время для редактирования - 1 час от начала публикации</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>string</td>
+        <td>Текст отзыва, 50-5000 символов</td>
+    </tr>
+    <tr>
+        <td>rate</td>
+        <td>int</td>
+        <td>Тип отзыва: 1 - положительный (по умолчанию), 2 - отрицательный</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_report</td>
+        <td>Идентификатор созданного/измененного отзыва</td>
+    </tr>
+</table>
+
+<h5>Ошибки</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Значение</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>is_timeout</td>
+        <td>Таймаут между добавлениями отзывов одному пользователю - 1 сутки.</td>
+    </tr>
+    <tr>
+        <td>no_access</td>
+        <td>Нет доступа для добавления отзыва (у текущего пользователя-автора блокировка на добавление отзывов либо нет общих работ - заказов, статей и т.д).)</td>
+    </tr>
+</table>
+
+<div id="users.getUserBW"></div>
+<h4>users.getUserBW</h4>
+<p>Функция возвращает количество белых и черных списков, в которых находится пользователь.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор пользователя, обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя, у которого считаем (повторяет входящий параметр)</td>
+    </tr>
+    <tr>
+        <td>whiteList</td>
+        <td>Число пользователей, у которых запрашиваемый пользователь в белом списке</td>
+    </tr>
+    <tr>
+        <td>blackList</td>
+        <td>Число пользователей, у которых запрашиваемый пользователь в черном списке</td>
+    </tr>
+</table>
+
+<div id="users.setUserBW"></div>
+<h4>users.setUserBW</h4>
+<p>Функция добавляет или удаляет пользователя в черный/белый список.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор добавляемого/удаляемого пользователя, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>id_group</td>
+        <td>int</td>
+        <td>Идентификатор группы БС/ЧС, если не определен, то "без группы"</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>string</td>
+        <td>Тип действия: whiteList - в белый список, blackList - в черный, delete - удалить из списка</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор пользователя, над которым производим действие (повторяет входящий параметр)</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>Название выполненного действия</td>
+    </tr>
+</table>
+
+<div id="users.getBalance"></div>
+<h4>users.getBalance</h4>
+<p>Функция возвращает состояние лицевого счета текущего пользователя.</p>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор текущего пользователя</td>
+    </tr>
+    <tr>
+        <td>balance</td>
+        <td>Доступная сумма в рублях на лицевом счета</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Текущая дата запроса</td>
+    </tr>
+</table>
+
+<div id="tasks.listTasks"></div>
+<h4>tasks.listTasks</h4>
+<p>Возвращает список заказов текущего пользователя, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>int</td>
+        <td>Число пользователей для выборки, не более 100 за запрос (по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td>int</td>
+        <td>Смещение от последней записи в выборке, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор конкретного заказа, будет возвращен только этот заказ</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>int</td>
+        <td>Идентификатор исполнителя заказа, при указании этого параметра будет фильтрация заказов по данному полю</td>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>int</td>
+        <td>Идентификатор папки проекта (фильтрация по папке)</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>int</td>
+        <td><div>Фильтрация по статусу заказа, по умолчанию все заказы. Если указан статус "1", то дополнительно накладывается выдача только публикуемых заказов (не черновиков!)</div>
+<p>Значения:</p>
+<ul>
+    <li>1 - ожидание выбора исполнителя</li>
+    <li>2 - принят к исполнению</li>
+    <li>3 - на проверке</li>
+    <li>4 - выполнен</li>
+    <li>5 - просрочен</li>
+</ul></td>
+    </tr>
+    <tr>
+        <td>filter</td>
+        <td>int</td>
+        <td>
+            <div>Флаг общей фильтрации, по умолчанию все заказы. Исключает фильтрацию по статусу (если указан корректный параметр filter, то параметр status игнорируется)</div>
+            <p>Значения:</p>
+            <ul>
+                <li>10 - просроченные заказы в работе, по которым не принято решение</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>target</td>
+        <td>int</td>
+        <td>
+            <div>Фильтрация по уровню доступа заказа для исполнителя</div>
+            <p>Значения:</p>
+            <ul>
+                <li>1 - Общий заказ</li>
+                <li>2 - Заказ для белого списка</li>
+                <li>3 - Индивидуальный заказ</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>only_id</td>
+        <td>int</td>
+        <td>Если флаг указан и имеет значение 1, то будут возвращены только id заказов, а не вся информация. Параметр необязательный.</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор исполнителя, если не назначен, то значение 0</td>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>Идентификатор папки</td>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>Идентификатор категории</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата создания/редактирования заказа, unixtime</td>
+    </tr>
+    <tr>
+        <td>end_date</td>
+        <td>Дата принятия заказа, unixtime, если не принят, то 0</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>Название заказа</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Описание заказа</td>
+    </tr>
+    <tr>
+        <td>id_type</td>
+        <td>Тип заказа (1 - копирайтинг, 2 - рерайтинг, 3 - перевод, 4 - SEO копирайтинг)</td>
+    </tr>
+    <tr>
+        <td>id_subtype</td>
+        <td>Тип текста (0 - не указан, 1 - продающий текст, 2 - информационная статья, 3 - новость/пресс-релиз, 4 - текст для email-рассылки, 5 - текст для соцсетей, 6 - отзыв)</td>
+    </tr>
+    <tr>
+        <td>id_level</td>
+        <td>Уровень сложности заказа (0 - без квалификации, 1 - начальный уровень, 2 - средний уровень, 3 - высокий уровень)</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>Срок сдачи заказа, unixtime</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>Статус заказа (1 - ожидание выбора исполнителя, 2 - принят к исполнению, 3 - на проверке, 4 - выполнен, 5 - просрочен)</td>
+    </tr>
+    <tr>
+        <td>public</td>
+        <td>Флаг публикации заказа (1 - публикуется, 0 - нет)</td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td>Полная цена заказа, вне зависимости от типа цены</td>
+    </tr>
+    <tr>
+        <td>price_type</td>
+        <td>Тип цены заказа (1 - за 1000 символов, 2 - за весь заказ)</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>Размер заказа в символах</td>
+    </tr>
+    <tr>
+        <td>whitespaces</td>
+        <td>Флаг учета пробелов (0 - без пробелов, 1 - с пробелами)</td>
+    </tr>
+    <tr>
+        <td>checksize</td>
+        <td>Флаг проверки объема результата при сдаче (требование не менее 90%) - (0 - не проверять, 1 - проверять)</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст заказа</td>
+    </tr>
+    <tr>
+        <td>quick</td>
+        <td>Флаг срочности заказа (1 - срочный, 0 - не срочный)</td>
+    </tr>
+    <tr>
+        <td>uniq</td>
+        <td>Требование уникальности результата для автоматической отправки на доработку, если поле отсутствует, то параметр в заказе не указан</td>
+    </tr>
+    <tr>
+        <td>target</td>
+        <td>Флаг уровня доступа заказа для исполнителя</td>
+    </tr>
+    <tr>
+        <td>id_target</td>
+        <td>Идентификатор пользователя в случае индивидуального заказа, если поле отсутствует, то заказ не индивидуальный</td>
+    </tr>
+    <tr>
+        <td>keywords</td>
+        <td>Список ключевых слов при типе задания "СЕО-копирайтинг"</td>
+    </tr>
+    <tr>
+        <td>language_from<br>language_to</td>
+        <td>Идентификаторы языков переводов при типе задания "Перевод"</td>
+    </tr>
+    <tr>
+        <td>multitask</td>
+        <td>Флаг, является ли заказ мультизаказом (1 - да, 0 - во всех остальных случаях)</td>
+    </tr>
+    <tr>
+        <td>multicount</td>
+        <td>Число оставшихся заказов при мультизаказе (которые можно создать при принятии заявки от исполнителя на мультизаказ), при достижении 0 мультизаказ автоматически снимается с публикации</td>
+    </tr>
+    <tr>
+        <td>filename</td>
+        <td>Адрес вложенного в заказ файла, если его нет, то поле отсутствует</td>
+    </tr>
+</table>
+
+<div id="tasks.viewNotes"></div>
+<h4>tasks.viewNotes</h4>
+<p>Функция возвращает список заявок и комментариев на указанный заказ (или список заказов) текущего пользователя, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int (array)</td>
+        <td>Идентификатор заказа (-ов, но не более <b>100</b>), обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор комментария</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст заявки</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата заявки, unixtime</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор автора комментария/заявки</td>
+    </tr>
+    <tr>
+        <td>login</td>
+        <td>Логин автора комментария/заявки</td>
+    </tr>
+    <tr>
+        <td>id_note</td>
+        <td>Идентификатор заявки, если заявка отсутствует, то есть запись - просто комментарий, то значение поля 0</td>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+</table>
+
+<div id="tasks.viewNotesAll"></div>
+<h4>tasks.viewNotesAll</h4>
+<p>Функция возвращает список всех поданных заявок на все заказы текущего заказчика.</p>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_note</td>
+        <td>Идентификатор заявки</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>Название заказа</td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td>Цена заказа</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>Срок сдачи заказа, unixtime</td>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор исполнителя</td>
+    </tr>
+    <tr>
+        <td>user</td>
+        <td>Логин исполнителя</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата заявки, unixtime</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст заявки</td>
+    </tr>
+</table>
+
+<div id="tasks.setNote"></div>
+<h4>tasks.setNote</h4>
+<p>Функция принятия указанной заявки на заказ, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор заявки (не комментария!), обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>comment</td>
+        <td>string</td>
+        <td>Комментарий при принятии заявки, добавляется в конец описания заказа, не более 500 символов</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>Идентификатор заказа, если заявка принадлежит мультизаказу, то индентификатор нового созданного заказа, иначе того, на который заявка принята</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя, назначенного исполнителем по принятой заявке</td>
+    </tr>
+</table>
+
+<div id="tasks.unsetNote"></div>
+<h4>tasks.unsetNote</h4>
+<p>Функция отклонения указанной заявки на заказ, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор заявки (не комментария!), обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>Идентификатор заказа, которому принадлежит отклоненная заявка</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя, заявку которого отклонили</td>
+    </tr>
+</table>
+
+<div id="tasks.paidTask"></div>
+<h4>tasks.paidTask</h4>
+<p>Функция принятия заказа на проверке, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>array (int var1, int var2, ... )</td>
+        <td>Массив идентификаторов принимаемых заказов вида <span class="code">id[]=1&amp;id[]=2</span>, обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>Флаг успешности принятия</td>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td>Массив идентификаторов принятых заказов</td>
+    </tr>
+</table>
+
+<div id="tasks.cancelTask"></div>
+<h4>tasks.cancelTask</h4>
+<p>Функция отправки заказа на проверке на доработку, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td class="nowrap">array (int var1, int var2, ... )</td>
+        <td>Массив идентификаторов отклоняемых заказов вида <span class="code">id[]=1&amp;id[]=2</span>, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>string</td>
+        <td>Комментарий к отклонению, обязателен, если отклоняется 1 заказ, а не пакет заказов, иначе обнуляется</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>Флаг успешности принятия</td>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td>Массив идентификаторов отклоненных заказов</td>
+    </tr>
+</table>
+
+<div id="tasks.getResults"></div>
+<h4>tasks.getResults</h4>
+<p>Функция получения результатов по заказам, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td class="nowrap">array (int var1, int var2, ...)</td>
+        <td>Массив идентификаторов заказов, обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор результата</td>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя, сдавшего результат</td>
+    </tr>
+    <tr>
+        <td>comment</td>
+        <td>Комментарий пользователя к сдаче результата</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата сдачи результата, unixtime</td>
+    </tr>
+    <tr>
+        <td>date_reset</td>
+        <td>Дата отправки результата на доработку, unixtime</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>Статус результата (0 - на проверке, 1 - отклонен, 2 - принят)</td>
+    </tr>
+    <tr>
+        <td>check</td>
+        <td>Флаг проверки результата системой (0 - не проверено, 1 - проверено)</td>
+    </tr>
+    <tr>
+        <td>files</td>
+        <td>Массив файлов результата, ссылки на файлы действительны примерно сутки</td>
+    </tr>
+    <tr>
+        <td>per_keywords</td>
+        <td>Процент вхождения указанных ключевых слов, только для типа заказов SEO-копирайтинг</td>
+    </tr>
+    <tr>
+        <td>per_mistakes</td>
+        <td>Процент орфографических ошибок после проверки системой по внутреннему словарю</td>
+    </tr>
+    <tr>
+        <td>per_antiplagiat</td>
+        <td>Процент уникальности текста</td>
+    </tr>
+    <tr>
+        <td>per_diff</td>
+        <td>Процент схожести с исходником, только для типа заказов рерайтинг и при приложенном исходном тексте</td>
+    </tr>
+    <tr>
+        <td>auto_check_date</td>
+        <td>Дата проверки результата системой, unixtime</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>Тип приложенного документа</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>Размер приложенного файла</td>
+    </tr>
+    <tr>
+        <td>path</td>
+        <td>Путь для скачивания результата, действительно примерно сутки с момента осуществления запроса</td>
+    </tr>
+</table>
+
+<div id="tasks.deleteTask"></div>
+<h4>tasks.deleteTask</h4>
+<p>Функция удаления заказов в статусе ожидания исполнителя или из черновика, только для заказчика. Запрещено удалять заказы в течение недели после снятия исполнителя с заказа.
+</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td class="nowrap">array (int var1, int var2, ...)</td>
+        <td>Массив идентификаторов заказов, обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td>Массив идентификаторов удаленных заданий</td>
+    </tr>
+</table>
+
+<div id="tasks.extraPaid"></div>
+<h4>tasks.extraPaid</h4>
+<p>Функция начисления доплаты по заданию.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td class="nowrap">int</td>
+        <td>Идентификатор задания</td>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td class="nowrap">int</td>
+        <td>Сумма доплаты, не более стоимости заказа * 3</td>
+    </tr>
+    <tr>
+        <td>note</td>
+        <td class="nowrap">int</td>
+        <td>Посылать уведомление исполнителю, по умолчанию 1 (1 - да, 0 - нет)</td>
+    </tr>
+    <tr>
+        <td>autopay</td>
+        <td class="nowrap">string</td>
+        <td>Расчет доплаты автоматически, по числу превышения знаков у последнего результата (get - получить расчет доплаты, pay - произвести доплату), по умолчанию размер доплаты берется из параметра count</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>Флаг успешности зачисления</td>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>Размер доплаты. Возвращается если установлен параметр autopay=get</td>
+    </tr>
+</table>
+
+<div id="tasks.saveTask"></div>
+<h4>tasks.saveTask</h4>
+<p>Функция добавления/редактирования заказа, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор редактируемого заказа, если не указан, то заказ будет создан новый</td>
+    </tr>
+    <tr>
+        <td>public</td>
+        <td>int</td>
+        <td>Флаг публикации заказа (0 - не публикуется, 1 - публикуется)</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>string</td>
+        <td>Название заказа, не более 512 символов, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>Описание заказа, не более 5000 символов</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>string</td>
+        <td>Текст заказа, не более 40000 символов</td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td>int</td>
+        <td>Цена заказа, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>price_type</td>
+        <td>int</td>
+        <td>Тип цены заказа (1 - за 1000 знаков, 2 - за весь заказ)</td>
+    </tr>
+    <tr>
+        <td>uniq</td>
+        <td>int</td>
+        <td>Требуемая уникальность заказа, по умолчанию не определена</td>
+    </tr>
+    <tr>
+        <td>whitespaces</td>
+        <td>int</td>
+        <td>Флаг с учетом пробелов или нет (0 - без пробелов, 1 - с пробелами)</td>
+    </tr>
+    <tr>
+        <td>only_stars</td>
+        <td>int</td>
+        <td>Флаг учета уровня мастерства исполнителя (0 - без учета, 1 - с учетом)</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>int</td>
+        <td>Размер заказа в символах, обязательный параметр при отсутствии параметра <span class="code">text</span></td>
+    </tr>
+    <tr>
+        <td>checksize</td>
+        <td>int</td>
+        <td>Флаг учета минимального размера результата сдачи в 90% (1 - включено и тексты менее 90% от размера заказа приниматься не будут, 0 - выключено)</td>
+    </tr>
+    <tr>
+        <td>id_type</td>
+        <td>int</td>
+        <td>Идентификатор типа заказа, по умолчанию 1 (копирайтинг)</td>
+    </tr>
+    <tr>
+        <td>id_subtype</td>
+        <td>int</td>
+        <td>Тип текста, необязательный параметр (0 по умолчанию). Значения: 1 - продающий текст, 2 - информационная статья, 3 - новость/пресс-релиз, 4 - текст для email-рассылки, 5 - текст для соцсетей, 6 - отзыв</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>string</td>
+        <td>Срок сдачи заказа в формате <span class="code">дд.мм.гггг</span>, не более 90 дней</td>
+    </tr>
+    <tr>
+        <td>timeline</td>
+        <td>string</td>
+        <td>Время сдачи заказа в формате <span class="code">чч:мм</span></td>
+    </tr>
+    <tr>
+        <td>auto_work</td>
+        <td>int</td>
+        <td>Флаг автопринятия заявки в заказе (1 - автопринятие, 0 - нет)</td>
+    </tr>
+    <tr>
+        <td>auto_rate</td>
+        <td>int</td>
+        <td>Рейтинг для автопринятия заказа, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>auto_reports</td>
+        <td>int</td>
+        <td>Число положительных отзывов для автопринятия заказа (не менее), 0 по умолчанию</td>
+    </tr>
+    <tr>
+        <td>auto_reports_n</td>
+        <td>int</td>
+        <td>Число отрицательных отзывов для автопринятия заказа (не более), по умолчанию параметр отсутствует, может быть 0</td>
+    </tr>
+    <tr>
+        <td>auto_level</td>
+        <td>int</td>
+        <td>Идентификатор уровня мастерства исполнителя для автопринятия заказа, по умолчанию 0 (без квалификации)</td>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>int</td>
+        <td>Идентификатор категории заказа, обязательное поле</td>
+    </tr>
+    <tr>
+        <td>multitask</td>
+        <td>int</td>
+        <td>Флаг мультизаказа (1 - мультизаказ, 0 - обычный)</td>
+    </tr>
+    <tr>
+        <td>multicount</td>
+        <td>int</td>
+        <td>Число мультизаказов</td>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>int</td>
+        <td>Идентификатор папки заказа</td>
+    </tr>
+    <tr>
+        <td>target_task</td>
+        <td>int</td>
+        <td>Флаг доступности заказа (1 - для всех, 2 - для белого списка, 3 - индивидуальный заказ)</td>
+    </tr>
+    <tr>
+        <td>id_target</td>
+        <td>int</td>
+        <td>Идентификатор пользователя, для кого выставлен индивидуальный заказ, или группы БС - если заказ выставляется для конкретной группы</td>
+    </tr>
+    <tr>
+        <td>keywords</td>
+        <td>string</td>
+        <td>Список ключевых слов через запятую для типа заказа SEO-копирайтинг (4)</td>
+    </tr>
+    <tr>
+        <td>language_from</td>
+        <td>int</td>
+        <td>Идентификатор языка, откуда осуществлять перевод, для типа заказа по переводу (3)</td>
+    </tr>
+    <tr>
+        <td>language_to</td>
+        <td>int</td>
+        <td>Идентификатор языка, на который осуществлять перевод, для типа заказа по переводу (3)</td>
+    </tr>
+    <tr>
+        <td>bwgroup_send</td>
+        <td>int</td>
+        <td>Флаг (1 - посылать, 0 или не указан - не посылать), посылать ли уведомление группе из БС о выставлении для них заказа (параметры target_task = 2, id_target = ИД группы БС)</td>
+    </tr>
+    <tr>
+        <td>file</td>
+        <td>file</td>
+        <td>Прилагаемый файл заказа</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_tasks</td>
+        <td>Идентификатор созданного или отредактированного заказа</td>
+    </tr>
+</table>
+
+<h5>Ошибки</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Значение</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>no_utarget</td>
+        <td>При создании индивидуального заказа пользователь не найден либо занес заказчика (или занесен заказчиком) в черный/игнорируемый список.</td>
+    </tr>
+    <tr>
+        <td>no_work</td>
+        <td>Вид работы или цена заказа не соответствует критериям исполнителя.</td>
+    </tr>
+</table>
+
+<div id="tasks.failTask"></div>
+<h4>tasks.failTask</h4>
+<p>Функция отмены просроченного заказа, только для заказчика. Отмененный заказ невозможно удалить, он будет существовать для истории 2 недели, после чего удалится автоматически.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор просроченного заказа, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>copy</td>
+        <td>int</td>
+        <td>Флаг создания копии отменяемого заказа, если указано и значение 1, то создастся публикуемая копия заказа со сроком, задаваемым параметрами ниже</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>string</td>
+        <td>Новый срок сдачи в формате дд.мм.гггг, по умолчанию - текущее время плюс 5 суток для несрочного заказа или 5 часов для срочного</td>
+    </tr>
+    <tr>
+        <td>timeline</td>
+        <td>string</td>
+        <td>Новое время сдачи в формате чч:мм, 23:59 по умолчанию</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор отмененного заказа</td>
+    </tr>
+    <tr>
+        <td>id_copy</td>
+        <td>Идентификатор созданной копии заказа, если указано копирование</td>
+    </tr>
+    <tr>
+        <td>rateup</td>
+        <td>Ссылка для восстановления рейтинга исполнителю</td>
+    </tr>
+</table>
+
+<div id="tasks.copyTask"></div>
+<h4>tasks.copyTask</h4>
+<p>Функция копирования заказа, только для заказчика. Новый заказ будет публикуемым и доступный исполнителям, настройки автопринятия и мультизаказа не копируются.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор копируемого заказа, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>string</td>
+        <td>Новый срок сдачи в формате дд.мм.гггг, не более 90 дней, по умолчанию или если некорректное - текущее время плюс 5 суток для несрочного заказа или 5 часов для срочного</td>
+    </tr>
+    <tr>
+        <td>timeline</td>
+        <td>string</td>
+        <td>Новое время сдачи в формате чч:мм, 23:59 по умолчанию</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_copy</td>
+        <td>Идентификатор созданной копии заказа</td>
+    </tr>
+</table>
+
+<div id="tasks.setDeadline"></div>
+<h4>tasks.setDeadline</h4>
+<p>Функция увеличения срока сдачи заказа, только для заказчика. Если заказ просроченный, то он будет возвращен в работу, если в черновике, то возможна его публикации для ожидания подачи заявок.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор заказа, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>string</td>
+        <td>Новый срок сдачи заказа в формате дд.мм.гггг (25.10.2013), должен быть не меньше текущего, но не более 90 дней, обязательный параметр.</td>
+    </tr>
+    <tr>
+        <td>timeline</td>
+        <td>string</td>
+        <td>Новое время сдачи заказа в формате чч:мм (12:16), если не указано, то будет 23:59, необязательный параметр</td>
+    </tr>
+    <tr>
+        <td>public</td>
+        <td>int</td>
+        <td>Флаг публикации черновика, если 1, то заказ-черновик будет опубликован, иначе статус публикации не изменится</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>Установленная дата и время сдачи заказа</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>Текущий статус заказа (например, был 5 - просроченный, после продления станет 2 - в работе)</td>
+    </tr>
+    <tr>
+        <td>quick</td>
+        <td>Флаг срочности заказа, 1 - срочный, 0 - нет</td>
+    </tr>
+</table>
+
+<div id="tasks.saveComment"></div>
+<h4>tasks.saveComment</h4>
+<p>Функция добавления комментария в заказ, только для заказчика или назначенного исполнителя.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор заказа, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>string</td>
+        <td>Текст комментария, максимум 2048 символов, обязательный параметр.</td>
+    </tr>
+    <tr>
+        <td>hide</td>
+        <td>int</td>
+        <td>Флаг скрытия текста комментария (1 - скрывать, 0 или отсутствует - не скрывать), необязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>id_comment</td>
+        <td>Идентификатор добавленного комментария</td>
+    </tr>
+    <tr>
+        <td>comments</td>
+        <td>Число комментариев в заказе</td>
+    </tr>
+</table>
+
+<div id="tasks.sendNoteFail"></div>
+<h4>tasks.sendNoteFail</h4>
+<p>Функция создает заявку в обратную связь на снятие исполнителя с заказа.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор заказа, с которого снимать исполнителя, заказ должен быть в статусе "На проверке" и текущий исполнитель должен иметь хоть один сданный результат.</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>string</td>
+        <td>Текст заявки на снятие, причины, недочеты.</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>Флаг успешного создания заявки</td>
+    </tr>
+    <tr>
+        <td>ticket</td>
+        <td>Ссылка на созданный тикет в обратную связь</td>
+    </tr>
+</table>
+
+<div id="tasks_archive.listTasks"></div>
+<h4>tasks_archive.listTasks</h4>
+<p>Возвращает список архивных заказов текущего пользователя, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>int</td>
+        <td>Число пользователей для выборке, не более 100 за запрос (по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td>int</td>
+        <td>Смещение от последней записи в выборке, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>order</td>
+        <td>string</td>
+        <td>Порядок сортировки, возможные значения: desc, asc (по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор конкретного заказа, будет возвращен только этот заказ</td>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>int</td>
+        <td>Идентификатор папки проекта (фильтрация по папке)</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>int</td>
+        <td>Идентификатор исполнителя заказа, при указании этого параметра будет фильтрация заказов по данному полю</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор исполнителя, если не назначен, то значение 0</td>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>Идентификатор папки</td>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>Идентификатор категории</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата создания/редактирования заказа, unixtime</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>Название заказа</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Описание заказа</td>
+    </tr>
+    <tr>
+        <td>id_type</td>
+        <td>Тип заказа (1 - копирайтинг, 2 - рерайтинг, 3 - перевод, 4 - SEO копирайтинг)</td>
+    </tr>
+    <tr>
+        <td>id_level</td>
+        <td>Уровень сложности заказа (0 - без квалификации, 1 - начальный уровень, 2 - средний уровень, 3 - высокий уровень)</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>Срок сдачи заказа, unixtime</td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td>Цена заказа</td>
+    </tr>
+    <tr>
+        <td>price_type</td>
+        <td>Тип цены заказа (1 - за 1000 символов, 2 - за весь заказ)</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>Размер заказа в символах</td>
+    </tr>
+    <tr>
+        <td>whitespaces</td>
+        <td>Флаг учета пробелов (0 - без пробелов, 1 - с пробелами)</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст заказа</td>
+    </tr>
+    <tr>
+        <td>end_date</td>
+        <td>Дата окончания (принятия) заказа, unixtime</td>
+    </tr>
+    <tr>
+        <td>date_archive</td>
+        <td>Дата переноса заказа в архив, unixtime</td>
+    </tr>
+    <tr>
+        <td>keywords</td>
+        <td>Список ключевых слов при типе задания "СЕО-копирайтинг"</td>
+    </tr>
+    <tr>
+        <td>language_from<br>language_to</td>
+        <td>Языки переводов при типе задания "Перевод"</td>
+    </tr>
+</table>
+
+<div id="tasks_archive.getResults"></div>
+<h4>tasks_archive.getResults</h4>
+<p>Функция получения результатов по архивному заказу, только для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор заказа, обязательный параметр</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя, сдавшего результат</td>
+    </tr>
+    <tr>
+        <td>comment</td>
+        <td>Комментарий пользователя к сдаче результата</td>
+    </tr>
+    <tr>
+        <td>content</td>
+        <td>Текст результата</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата сдачи результата, unixtime</td>
+    </tr>
+    <tr>
+        <td>date_reset</td>
+        <td>Дата отправки результата на доработку, unixtime</td>
+    </tr>
+    <tr>
+        <td>check</td>
+        <td>Массив параметров проверки результата системой</td>
+    </tr>
+    <tr>
+        <td>files</td>
+        <td>Массив файлов результата, ссылки на файлы действительны примерно сутки</td>
+    </tr>
+</table>
+
+<div id="options.getLangs"></div>
+<h4>options.getLangs</h4>
+<p>Функция получения списка языков, используемых в системе. </p>
+<h5>Результат</h5>
+<p>Возвращается массив, где ключ - идентификатор языка, значение - название языка.</p>
+
+<div id="articles.getList"></div>
+<h4>articles.getList</h4>
+<p>Возвращает список готовых статей на продажу. Поле "Описание статьи" не выводится во избежание автоматической выемки всех описаний статей.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>int</td>
+        <td>Число статей для выборке, не более 20 за запрос (по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td>int</td>
+        <td>Смещение от последней записи в выборке, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>int</td>
+        <td>Идентификатор автора статьи для фильтрации списка</td>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>int</td>
+        <td>Идентификатор категории статьи для фильтрации списка</td>
+    </tr>
+    <tr>
+        <td>subcat</td>
+        <td>int</td>
+        <td>Опция поиска в подкатегориях (1 - искать в подкатегориях, 0 - нет, по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>id_subtype</td>
+        <td>int</td>
+        <td>Идентификатор типа статьи для фильтрации списка (от 1 до 10)</td>
+    </tr>
+    <tr>
+        <td>filter</td>
+        <td>int</td>
+        <td>Флаг показа купленных статей текущим пользователем, если указано 1, то будут выбраны только купленные статьи текущим пользователем, иначе только статьи на продажу</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор статьи: будет выбрана только указанная статья</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td class="nowrap">string (40)</td>
+        <td>Строка для поиска по названию, описанию и ключевым словам</td>
+    </tr>
+    <tr>
+        <td>price_from, price_to, price_type</td>
+        <td class="nowrap">int</td>
+        <td>Фильтрация по цене, от ... до, если указан параметр price_type (любое значение), то поиск по цене за 1000 знаков</td>
+    </tr>
+    <tr>
+        <td>size_from, size_to</td>
+        <td class="nowrap">int</td>
+        <td>Фильтрация по размеру текста, от ... до</td>
+    </tr>
+    <tr>
+        <td>uniq_from, uniq_to</td>
+        <td class="nowrap">int</td>
+        <td>Фильтрация по уникальности статьи, от ... до</td>
+    </tr>
+    <tr>
+        <td>id_language</td>
+        <td class="nowrap">int</td>
+        <td>Фильтрация по языку статьи, список идентификаторов <a href="#options.getLangs">options.getLangs</a>, если 0 или ошибочен, то без учета параметра</td>
+    </tr>
+    <tr>
+        <td>sort</td>
+        <td class="nowrap">string</td>
+        <td>Сортировка статей, значения: <code>relevancy</code> (по релевантности при поиске по тексту), <code>title</code> (по названию), <code>price</code> (по цене), <code>size</code> (по размеру), <code>uniq</code> (по уникальности), <code>date</code> (по дате добавления - <u>по умолчанию</u>)</td>
+    </tr>
+    <tr>
+        <td>order</td>
+        <td class="nowrap">string</td>
+        <td>Порядок сортировки статей, только при заданном параметре <code>sort</code>, значения: <code>desc</code> (по убыванию), <code>asc</code> (по возрастанию)</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор статьи</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>Название статьи</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Закодированная в base64 картинка описания статьи (формат картинки png)</td>
+    </tr>
+    <tr>
+        <td>keywords</td>
+        <td>Ключевые слова статьи</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата добавления статьи, unixtime</td>
+    </tr>
+    <tr>
+        <td>date_buy</td>
+        <td>Дата покупки статьи, unixtime (только для купленной, при filter=1)</td>
+    </tr>
+    <tr>
+        <td>id_type</td>
+        <td>Идентификатор типа текста статьи</td>
+    </tr>
+    <tr>
+        <td>id_subtype</td>
+        <td>Идентификатор типа статьи (1 - общая статья, 2 - новость, 3 - описание товара для интернет-магазина, 4 - обзор товара, 5 - кулинарный рецепт, 6 - мастер-классы (рукоделие, поделки и проч.), 7 - пресс-релиз, 8 - эссе, 9 - статья для главной страницы сайта, 10 - лирика (стихотворение))</td>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>Идентификатор папки купленной статьи</td>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>Идентификатор категории статьи</td>
+    </tr>
+    <tr>
+        <td>id_language</td>
+        <td>Идентификатор языка текста статьи</td>
+    </tr>
+    <tr>
+        <td>full_price</td>
+        <td>Цена статьи, включая комиссию для покупателя (с учетом возможной скидки)</td>
+    </tr>
+    <tr>
+        <td>discount</td>
+        <td>Размер скиди для статьи в процентах</td>
+    </tr>
+    <tr>
+        <td>date_discount</td>
+        <td>Дата до которой действует скидка (включительно)</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>Число символов в статье</td>
+    </tr>
+    <tr>
+        <td>images</td>
+        <td>Число изображений в статье</td>
+    </tr>
+    <tr>
+        <td>unq, unq_shin</td>
+        <td>Уникальность статьи в % (проверка на рерайтинг и проверка на копии)</td>
+    </tr>
+    <tr>
+        <td>moder_check</td>
+        <td>Флаг проверки статьи (авто)модератором на качество</td>
+    </tr>
+    <tr>
+        <td>moder_orph</td>
+        <td>Оценка орфографии (1 - без ощибок, 0 - с ошибками)</td>
+    </tr>
+    <tr>
+        <td>moder_punc</td>
+        <td>Оценка пунктуации и грамматики (1 - без ощибок, 0 - с ошибками)</td>
+    </tr>
+    <tr>
+        <td>moder_style</td>
+        <td>Оценка стилистики (1 - без ощибок, 0 - с ошибками)</td>
+    </tr>
+</table>
+
+<div id="articles.buy"></div>
+<h4>articles.buy</h4>
+<p>Функция осуществляет покупку указанной статьи текущим пользователем</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор покупаемой статьи</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор купленной статьи</td>
+    </tr>
+</table>
+
+<div id="articles.getText"></div>
+<h4>articles.getText</h4>
+<p>Функция выводит тексты запрошенных купленных статей</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td class="nowrap">array (int var1, int var2, ...)</td>
+        <td>Массив идентификаторов купленных статей</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор купленной статьи</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>Название купленной статьи</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Описание статьи</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст купленной статьи</td>
+    </tr>
+</table>
+
+<div id="articles.download"></div>
+<h4>articles.download</h4>
+<p>Функция создает zip архив с текстами и изображениями указанных купленных статей для текущего пользователя</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td class="nowrap">array (int var1, int var2, ...)</td>
+        <td>Массив идентификаторов купленных статей</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>path</td>
+        <td>Путь для скачивания ZIP архива</td>
+    </tr>
+</table>
+
+<div id="articles_archive.getList"></div>
+<h4>articles_archive.getList</h4>
+<p>Возвращает список купленных пользователм статей и перенесенных в архив статей.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>int</td>
+        <td>Число статей для выборке, не более 20 за запрос (по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td>int</td>
+        <td>Смещение от последней записи в выборке, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>int</td>
+        <td>Идентификатор автора статьи для фильтрации списка</td>
+    </tr>
+    <tr>
+        <td>id_subtype</td>
+        <td>int</td>
+        <td>Идентификатор типа статьи для фильтрации списка (от 1 до 10)</td>
+    </tr>
+    <tr>
+        <td>order</td>
+        <td>string</td>
+        <td>Порядок сортировки, возможные значения: desc, asc (по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>int</td>
+        <td>Идентификатор категории статьи для фильтрации списка</td>
+    </tr>
+    <tr>
+        <td>subcat</td>
+        <td>int</td>
+        <td>Опция поиска в подкатегориях (1 - искать в подкатегориях, 0 - нет, по умолчанию)</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td class="nowrap">string (40)</td>
+        <td>Строка для поиска по названию, описанию и ключевым словам</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор статьи</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>Название статьи</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Описание статьи</td>
+    </tr>
+    <tr>
+        <td>keywords</td>
+        <td>Ключевые слова статьи</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата добавления статьи, unixtime</td>
+    </tr>
+    <tr>
+        <td>id_type</td>
+        <td>Идентификатор типа текста статьи</td>
+    </tr>
+    <tr>
+        <td>id_subtype</td>
+        <td>Идентификатор типа статьи</td>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>Идентификатор категории статьи</td>
+    </tr>
+    <tr>
+        <td>id_language</td>
+        <td>Идентификатор языка текста статьи</td>
+    </tr>
+    <tr>
+        <td>full_price</td>
+        <td>Цена статьи, включая комиссию для покупателя</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td>Число символов в статье</td>
+    </tr>
+    <tr>
+        <td>images</td>
+        <td>Число изображений в статье</td>
+    </tr>
+    <tr>
+        <td>quality</td>
+        <td>Массив качественных оценок статьи, если она была проверена (авто) модератором</td>
+    </tr>
+</table>
+
+<div id="articles_archive.getText"></div>
+<h4>articles_archive.getText</h4>
+<p>Функция выводит тексты запрошенных статей из архива текущего пользователя</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td class="nowrap">array (int var1, int var2, ...)</td>
+        <td>Массив идентификаторов статей в архиве</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор статьи</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>Название статьи</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Описание статьи</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст статьи</td>
+    </tr>
+</table>
+
+<div id="articles_archive.download"></div>
+<h4>articles_archive.download</h4>
+<p>Функция создает zip архив с текстами и изображениями указанных статей из архива для текущего пользователя</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td class="nowrap">array (int var1, int var2, ...)</td>
+        <td>Массив идентификаторов статей из архива</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>path</td>
+        <td>Путь для скачивания ZIP архива</td>
+    </tr>
+</table>
+
+<div id="bwgroups.listGroups"></div>
+<h4>bwgroups.listGroups</h4>
+<p>Функция возвращает список групп для БС/ЧС текущего пользователя.</p>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_category</td>
+        <td>Идентификатор группы</td>
+    </tr>
+    <tr>
+        <td>id_parent</td>
+        <td>Идентификатор родительской группы</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>Название группы</td>
+    </tr>
+    <tr>
+        <td>depth</td>
+        <td>Глубина вложенности группы</td>
+    </tr>
+    <tr>
+        <td>last</td>
+        <td>Флаг, является ли группа последней по глубине вложенности</td>
+    </tr>
+</table>
+
+<div id="bwgroups.saveGroup"></div>
+<h4>bwgroups.saveGroup</h4>
+<p>Функция добавляет или изменяет группу для БС/ЧС текущего пользователя.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>string</td>
+        <td>Название группы, до 40 символов</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор редактируемой группы, если не указан, будет создана новая</td>
+    </tr>
+    <tr>
+        <td>id_parent</td>
+        <td>int</td>
+        <td>Идентификатор родительской категории, по умолчанию 0 - корень</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор созданной или отредактированной группы</td>
+    </tr>
+</table>
+
+<div id="bwgroups.deleteGroup"></div>
+<h4>bwgroups.deleteGroup</h4>
+<p>Функция удаляет группу для БС/ЧС и все ее подгруппы текущего пользователя.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int</td>
+        <td>Идентификатор удаляемой группы</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td>Массив идентификаторов удаленных групп</td>
+    </tr>
+</table>
+
+<div id="bwgroups.updateGroup"></div>
+<h4>bwgroups.updateGroup</h4>
+<p>Функция перемещает пользователя, уже занесенного в БС/ЧС, в указанную группу текущего пользователя.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>int</td>
+        <td>Идентификатор пользователя, уже внесенного в БС/ЧС, для переноса в другую группу</td>
+    </tr>
+    <tr>
+        <td>id_group</td>
+        <td>int</td>
+        <td>Идентификатор группы для переноса, если 0 или не указана, то считается как "без группы"</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор перенесенного пользователя</td>
+    </tr>
+    <tr>
+        <td>id_group</td>
+        <td>Идентификатор группы, куда перенесен пользователь</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>Название группы, куда перенесе пользователь, если пустая строка, значит пользователь удален из всех групп</td>
+    </tr>
+</table>
+
+<div id="messages.getList"></div>
+<h4>messages.getList</h4>
+<p>Функция выводит непрочитанные системные сообщения пользователя. Максимальный лимит сообщений 100.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td>int</td>
+        <td>Дата, с которой выводить сообщения, unixtime</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор сообщения</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата сообщения, unixtime</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст сообщения, может содержать HTML или BB форматирование</td>
+    </tr>
+</table>
+
+<div id="messages.setRead"></div>
+<h4>messages.setRead</h4>
+<p>Функция помечает указанные непрочитанные системные сообщения пользователя как прочитанные.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td class="nowrap">array (int var1, int var2, ...)</td>
+        <td>Массив идентификаторов сообщений</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td>Массив идентификаторов отмеченных сообщений</td>
+    </tr>
+</table>
+
+<div id="messages.setDelete"></div>
+<h4>messages.setDelete</h4>
+<p>Функция удаляет указанные непрочитанные системные сообщения пользователя.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td class="nowrap">array (int var1, int var2, ...)</td>
+        <td>Массив идентификаторов сообщений</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>ids</td>
+        <td>Массив идентификаторов удаленных сообщений</td>
+    </tr>
+</table>
+
+<div id="messages.readPrivate"></div>
+<h4>messages.readPrivate</h4>
+<p>Функция выводит сообщения из привата с указанным пользователем.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td class="nowrap">int</td>
+        <td>Идентификатор пользователя, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td class="nowrap">int</td>
+        <td>Число сообщений для выборки, максимально и по умолчанию 100</td>
+    </tr>
+    <tr>
+        <td>from</td>
+        <td class="nowrap">int</td>
+        <td>Смещение, начиная с которого выбирать, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>date_from</td>
+        <td class="nowrap">int</td>
+        <td>Дата начала выборки, unixtime</td>
+    </tr>
+    <tr>
+        <td>date_to</td>
+        <td class="nowrap">int</td>
+        <td>Дата окончания выборки, unixtime</td>
+    </tr>
+    <tr>
+        <td>unread</td>
+        <td class="nowrap">int</td>
+        <td>Если указано 1, то выводятся только непрочитанные сообщения, показанные сообщения сразу пометятся как прочитанные</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата сообщения, unixtime</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст сообщения</td>
+    </tr>
+    <tr>
+        <td>id_author</td>
+        <td>Идентификатор автора сообщения</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор собеседника</td>
+    </tr>
+    <tr>
+        <td>reads</td>
+        <td>Флаг прочтения сообщения, 1 - прочитано, 0 - не прочитано</td>
+    </tr>
+</table>
+
+<div id="messages.getCountUnread"></div>
+<h4>messages.getCountUnread</h4>
+<p>Функция возвращает количество непрочитанных сообщений из привата, с группировкой по авторам.</p>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>count</td>
+        <td>Общее количество непрочитанных сообщений</td>
+    </tr>
+    <tr>
+        <td>users</td>
+        <td>Массив ассоциативных пар значений [id_author =&gt; идентификатор пользователя, count =&gt; количество непрочитанных сообщений]</td>
+    </tr>
+</table>
+
+<div id="messages.writePrivate"></div>
+<h4>messages.writePrivate</h4>
+<p>Функция посылает сообщение в приват указанному пользователем. Данная возможность доступна пользователям с рейтингом более 10000. Таймаут между сообщениями 1 минута.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td class="nowrap">int</td>
+        <td>Идентификатор пользователя, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td class="nowrap">string</td>
+        <td>Текст сообщения, максимально 10000 символов</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор пользователя, которому посылается сообщение</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Текст сообщения</td>
+    </tr>
+    <tr>
+        <td>time</td>
+        <td>Время отсылки, unixtime</td>
+    </tr>
+</table>
+
+<div id="rating.listTasksFails"></div>
+<h4>rating.listTasksFails</h4>
+<p>Функция выводит список отказов от заказов для заказчика.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>int</td>
+        <td>Идентификатор конкретного заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>int</td>
+        <td>Идентификатор конкретного исполнителя</td>
+    </tr>
+    <tr>
+        <td>back</td>
+        <td>int</td>
+        <td>Флаг фильтрации по статусу возврата (1 - с возвратом рейтинга, 2 - без возврата, 0 - все, по умолчанию)</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор исполнителя</td>
+    </tr>
+    <tr>
+        <td>date</td>
+        <td>Дата отказа, unixtime</td>
+    </tr>
+    <tr>
+        <td>date_back</td>
+        <td>Дата возврата рейтинга, unixtime</td>
+    </tr>
+    <tr>
+        <td>back</td>
+        <td>Флаг возврата рейтинга</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>Название заказа</td>
+    </tr>
+</table>
+
+<div id="rating.ratingUserBack"></div>
+<h4>rating.ratingUserBack</h4>
+<p>Функция возвращает рейтинг исполнителю по определенному отказу.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>int</td>
+        <td>Идентификатор конкретного заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>int</td>
+        <td>Идентификатор конкретного исполнителя</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id_task</td>
+        <td>Идентификатор заказа</td>
+    </tr>
+    <tr>
+        <td>id_user</td>
+        <td>Идентификатор исполнителя</td>
+    </tr>
+    <tr>
+        <td>rate_back</td>
+        <td>Количество возвращенного рейтинга исполнителю</td>
+    </tr>
+</table>
+
+<div id="diff.compareText"></div>
+<h4>diff.compareText</h4>
+<p>Функция показывает степень схожести двух текстов</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>source</td>
+        <td>string</td>
+        <td>Исходный текст (длина от 30 до 20000 знаков)</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>string</td>
+        <td>Текст для сравнения (длина от 30 до 20000 знаков)</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>result</td>
+        <td>Процент совпадений</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>Результат сравнения для text</td>
+    </tr>
+    <tr>
+        <td>source</td>
+        <td>Результат сравнения для source</td>
+    </tr>
+</table>
+
+
+<div id="correction.add"></div>
+<h4>correction.add</h4>
+<p>Функция создает задание на коррекцию.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>string</td>
+        <td>Заголовок задания, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>Описание задания</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>string</td>
+        <td>Проверяемый текст, обязательный параметр</td>
+    </tr>
+    <tr>
+        <td>id_folder</td>
+        <td>int</td>
+        <td>Идентификатор папки проекта задания, по умолчанию 0</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>string</td>
+        <td>Дата проверки текста корректором в формате дд.мм.гггг, по умолчанию (минимально возможное) - текущее время плюс 1 сутки</td>
+    </tr>
+    <tr>
+        <td>timeline</td>
+        <td>string</td>
+        <td>Cрок проверки текста корректором в формате чч:мм, 23:59 по умолчанию</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор добавленного задания</td>
+    </tr>
+</table>
+
+<div id="correction.import"></div>
+<h4>correction.import</h4>
+<p>Функция создает задание на коррецию из заказов и статей.</p>
+<h5>Параметры</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Параметр</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>string</td>
+        <td>Тип объекта ('task' - заказ, 'a_task' - заказ из архива, 'article' - купленная статья, 'a_article' - купленная статья из архива), обязательное поле</td>
+    </tr>
+    <tr>
+        <td>id_object</td>
+        <td>int</td>
+        <td>Идентификатор объекта, обязательное поле. Внимание, для типа объекта 'task' необходимо указывать идентификатор результата выполнения заказа (а не самого заказа))!</td>
+    </tr>
+    <tr>
+        <td>object_type</td>
+        <td>string</td>
+        <td>Подтип объекта, может принимать единственное значений 'file', что указывает на приоритет импорта вложения, а не текстового поля (например, при импорте из результата заказа, когда сдается вложение и просто текст в поле)).</td>
+    </tr>
+    <tr>
+        <td>deadline</td>
+        <td>string</td>
+        <td>Дата проверки текста корректором в формате дд.мм.гггг, по умолчанию (минимально возможное) - текущее время плюс 1 сутки</td>
+    </tr>
+    <tr>
+        <td>timeline</td>
+        <td>string</td>
+        <td>Cрок проверки текста корректором в формате чч:мм, 23:59 по умолчанию</td>
+    </tr>
+</table>
+<h5>Результат</h5>
+<table class="mod-stats-table mod-stats-table-view">
+    <tr class="mod-main-row">
+        <th>Поле</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>Идентификатор добавленного задания</td>
+    </tr>
+</table>
+    </div>
+</div>
+<div class="mod-upb" title="Наверх"></div>
+        <div class="mod-footer">
+        <div class="mod-footer__container">
+            <div class="mod-footer__cols">
+                <div class="mod-footer__col">
+                    <ul>
+                        <li>Компания</li>
+                        <li><a href="/about/" class="js-target" data-target="FOOT_ABOUT">О проекте</a></li>
+                        <li><a href="/subscribes/" class="js-target" data-target="FOOT_RASSILKA">Блог</a></li>
+                        <li><a href="/docs/adver.pdf" class="js-target" data-target="FOOT_REKLAMA">Реклама</a></li>
+                        <li><a href="/feedback/" class="js-target" data-target="FOOT_FEEDBACK">Обратная связь</a></li>
+                        <li><a href="/faq/" class="js-target" data-target="FOOT_FAQ">Вопросы и ответы</a></li>
+                        <li><a href="/warning/" class="js-target" data-target="FOOT_BEZOPAS">Безопасность</a></li>
+                        <li><a href="/contacts/" class="js-target" data-target="FOOT_CONTACTS">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="mod-footer__col">
+                    <ul>
+                        <li>Разработчикам</li>
+                        <li><a href="/api-info/" class="js-target" data-target="FOOT_API_INFO">API от eTXT</a></li>
+                        <li><a href="/api/" class="js-target" data-target="FOOT_API">API системы</a></li>
+                        <li><a href="/api_server/" class="js-target" data-target="FOOT_API_ANT">API Проверки на уникальность</a></li>
+                    </ul>
+                    <ul>
+                        <li>Партнерам</li>
+                        <li><a href="/referals/" class="js-target" data-target="FOOT_PARTNERKA">Реферальная программа</a></li>
+                        <li><a href="/partnery/" class="js-target" data-target="FOOT_PARTNERY">Наши партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="mod-footer__col">
+                    <ul>
+                        <li>Работа на бирже</li>
+                        <li><a href="/workers/" class="js-target" data-target="FOOT_WORK">Удаленная работа</a></li>
+                        <li><a href="http://copywriting.web-3.ru/" class="js-target" data-target="FOOT_PORTAL">Портал копирайтеров</a></li>
+                        <li><a href="/users_rates/">Рейтинг пользователей</a></li>
+                        <li><a href="/search_rates/">Рейтинг поисковых запросов</a></li>
+                    </ul>
+                </div>
+                <div class="mod-footer__col">
+                    <a href="https://www.etxt.ru/"><img src="https://www.etxt.ru/skins/default/images/logo-bottom.png" alt="eTXT" class="mod-footer__col-logo"></a>
+                    <div class="mod-footer__phone">
+                        <p>+7 (495) 133-16-64</p>
+                        <span>Пн-Пт 10.00-18.00, по МСК</span>
+                    </div>
+                    <div class="mod-footer__social">
+                        <a href="https://vk.com/etxt_ru" class="mod-footer__social-vk"></a>
+                        <a href="https://www.facebook.com/etxt.ru" class="mod-footer__social-fb"></a>
+                        <a href="https://twitter.com/etxt_ru" class="mod-footer__social-tw"></a>
+                        <a href="https://www.youtube.com/channel/UCPl2xL1beoVRdT7M01ikz5A" class="mod-footer__social-yt"></a>
+                    </div>
+                    <div class="mod-footer__rss">
+                        <p><img src="https://www.etxt.ru/skins/default/images/rss-icon2.png" alt="RSS"> <a href="https://www.etxt.ru/rss/tasks/">RSS-лента заказов</a></p>
+                        <p><img src="https://www.etxt.ru/skins/default/images/rss-icon2.png" alt="RSS"> <a href="https://www.etxt.ru/rss/articles/">RSS-лента статей</a></p>
+                    </div>
+                    <div class="mod-footer__copy">
+                        &copy; 2008-2018<br>
+                        Все права защищены.<br><br>
+                        <a href="/docs/policy/">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mod-footer__bottom">
+                <div class="mod-footer__bottom-pay">
+                    <span class="mod-footer__bottom-pay-card"></span>
+                    <a href="/yandex/" class="mod-footer__bottom-pay-yandex"></a>
+                    <a href="https://webmoney.ru/" class="mod-footer__bottom-pay-webmoney"></a>
+                    <a href="https://qiwi.com/" class="mod-footer__bottom-pay-qiwi"></a>
+                </div>
+                <div class="mod-footer__bottom-counter">
+    <!--LiveInternet counter--><script><!--
+    document.write("<a href='http://www.liveinternet.ru/click;etxt.ru' "+
+    "target=_blank><img src='https://counter.yadro.ru/hit?t14.1;r"+
+    escape(document.referrer)+((typeof(screen)=="undefined")?"":
+    ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+    screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+    ";"+Math.random()+
+    "' alt='' title='LiveInternet' "+
+    "border=0 width=88 height=31 align=absmiddle><\/a>")//--></script><!--/LiveInternet-->
+
+    <!-- Yandex.Metrika informer -->
+    <a href="https://metrika.yandex.ru/stat/?id=6005518&amp;from=informer"
+    target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/6005518/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+    style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="6005518" data-lang="ru" /></a>
+    <!-- /Yandex.Metrika informer -->
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+    </div>
+<script>
+$(document).ready(function() {
+    if ($(document).width() < 768) {
+        $(".mod-footer__col > ul > li:first-child").click(function() {
+            $(this).parent().find("li").toggle();
+            $(this).toggle();
+        });
+    }
+});
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script>
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter6005518 = new Ya.Metrika2({
+                    id:6005518,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    ut:"noindex"
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks2");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/6005518?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49905946-1', 'etxt.ru');
+  ga('send', 'pageview');
+
+</script>
+
+<script>
+/* <![CDATA[ */
+var google_conversion_id = 949506598;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script src="//www.googleadservices.com/pagead/conversion.js"></script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/949506598/?guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=grecaptchaLoad&render=explicit" async defer></script>
+    <div class="mod-cookie">
+        <div class="mod-cookie__text">
+           Этот сайт собирает cookie-файлы. Продолжая использование сайта, вы даете согласие на сбор и использование cookie-файлов и других данных в соответствии с <a target="_blank" href="/docs/policy/">Политикой конфиденциальности</a>.
+        </div>
+        <div class="mod-cookie__close"><a href="#" class="mod-cookie__icon_close" data-link="https://www.etxt.ru/services/cookie.php?accept=1">Закрыть</a></div>
+    </div>
+    
+</body>
+</html>
+
+<!-- Time: 0.18440198898315 -->

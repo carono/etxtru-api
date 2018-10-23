@@ -1,0 +1,26 @@
+{
+  "name": "carono/etxtru",
+  "description": "",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Aleksandr Kasyanov",
+      "email": "info@carono.ru",
+      "homepage": "https://carono.ru"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "carono\\etxtru\\": "src"
+    }
+  },
+  "require-dev": {
+    "electrolinux/phpquery": "^0.9.6",
+    "ext-json": "*",
+    "carono/codegen": "^0.0.5"
+  },
+  "require": {
+    "carono/rest-client": "^0.2.1"
+  }
+}
