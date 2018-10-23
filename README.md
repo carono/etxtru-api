@@ -1,6 +1,7 @@
 [![Latest Stable Version](https://poser.pugx.org/carono/etxtru-api/v/stable)](https://packagist.org/packages/carono/etxtru-api)
 [![Total Downloads](https://poser.pugx.org/carono/etxtru-api/downloads)](https://packagist.org/packages/carono/etxtru-api)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/carono/etxtru-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/carono/etxtru-api/?branch=master)
+[![License](https://poser.pugx.org/carono/etxtru-api/license)](https://packagist.org/packages/carono/etxtru-api)
 
 # Введение
 
