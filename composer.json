@@ -1,6 +1,6 @@
 {
-  "name": "carono/etxtru",
-  "description": "",
+  "name": "carono/etxtru-api",
+  "description": "etxt.ru php api client",
   "type": "library",
   "license": "MIT",
   "authors": [
