@@ -18,7 +18,7 @@
   
 require '../vendor/autoload.php';
 
-$client = new \caronotxtru\Client();
+$client = new \carono\etxtru\Client();
 $client->apiKey = 'token';
 $client->password = 'password';
 
@@ -26,7 +26,7 @@ $response = $client->users()->getBalance();
   
 // Создание заказа
   
-$config = new \caronotxtru\config\TasksSaveTaskConfig();
+$config = new \carono\etxtru\config\TasksSaveTaskConfig();
 $config->public = 0;
 $config->title = 'Задача 1';
 $config->description = 'Описание';

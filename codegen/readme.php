@@ -26,7 +26,7 @@ $sectionData[] = <<<HTML
   
 require '../vendor/autoload.php';
 
-\$client = new \carono\etxtru\Client();
+\$client = new \carono\\etxtru\Client();
 \$client->apiKey = 'token';
 \$client->password = 'password';
 
@@ -34,7 +34,7 @@ require '../vendor/autoload.php';
   
 // Создание заказа
   
-\$config = new \carono\etxtru\config\TasksSaveTaskConfig();
+\$config = new \carono\\etxtru\config\TasksSaveTaskConfig();
 \$config->public = 0;
 \$config->title = 'Задача 1';
 \$config->description = 'Описание';
