@@ -43,10 +43,12 @@ class Client extends ClientAbstract
             $content = parent::getContent($urlRequest, $data);
             return self::stdClassToResponse($content, $responseClass);
         } catch (\Exception $e) {
-            $this->request->getBody()->rewind();
+			if ($this->request){
+                $this->request->getBody()->rewind();
+			}
             $response = new Response();
             $response->success = false;
-            $response->error = $this->request->getBody()->getContents();
+            $response->error = $this->request ? $this->request->getBody()->getContents() : $e->getMessage();
             return $response;
         }
     }
